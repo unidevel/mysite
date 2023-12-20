@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginxproxy/nginx-proxy:latest
+    privileged: false
+    restart: always
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - certs:/etc/nginx/certs:ro
+    - vhost:/etc/nginx/vhost.d
+    - html:/usr/share/nginx/html
+    labels:
+    - com.github.nginx-proxy.nginx
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+  letsencrypt:
+    image: nginxproxy/acme-companion:latest
+    privileged: false
+    restart: always
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    - acme:/etc/acme.sh
+    - certs:/etc/nginx/certs
+    - vhost:/etc/nginx/vhost.d
+    - html:/usr/share/nginx/html
+    environment:
+    - DEFAULT_EMAIL=unidevel@hotmail.com
+
+  myblog:
+    image: nginx:latest
+    privileged: false
+    restart: always
+    volumes:
+    - ./docs:/usr/share/nginx/html
+    environment:
+    - LETSENCRYPT_HOST=unidevel.cn,www.unidevel.cn
+    - VIRTUAL_HOST=unidevel.cn,www.unidevel.cn
+
+volumes:
+  certs:
+  vhost:
+  acme:
+  html:

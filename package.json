@@ -1,0 +1,10 @@
+{
+  "name": "mysite",
+  "version": "1.0.0",
+  "description": "mysite",
+  "main": "docs/index.html",
+  "scripts": {
+    "serve": "pnpx serve docs"
+  },
+  "author": "unidevel"
+}
