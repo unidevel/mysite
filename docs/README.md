@@ -6,7 +6,7 @@
 graph LR
     user(( User )) --> proxy
     proxy(nginx-proxy) -- Let's encrypt --> acme{{acme-companion}}
-    proxy -- proxy(unidevel.cn) --> nginx-docs(nginx)
+    proxy -- unidevel.cn --> nginx-docs(nginx)
     nginx-docs --> docs[ files in /docs ]
 ```
 
@@ -20,10 +20,10 @@ graph LR
 graph LR
     user(( User )) --> proxy
     proxy(nginx-proxy) -- Let's encrypt --> acme{{acme-companion}}
-    proxy -- proxy(unidevel.cn) --> nginx-docs(nginx)
+    proxy -- unidevel.cn --> nginx-docs(nginx)
     nginx-docs --> docs[ files in /docs ]
-    proxy -. wireguard(site1) .-> wireguard(wireguard) .-> internal1[home service1]
-    proxy -. ssh port forward(site2) .-> ssh(ssh server) .-> internal2[home service2]
+    proxy -. site1 .-> wireguard(wireguard) .-> internal1[home service1]
+    proxy -. site2 .-> ssh(ssh server) .-> internal2[home service2]
 ```
 
 ssh和wireguar的对比，总体来说各有优劣
