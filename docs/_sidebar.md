@@ -10,6 +10,7 @@
   * [font](font.md)
   * [Mac](mac.md)
   * [docker](docker.md)
+  * [chrome](chrome.md)
 
 * 墨水屏设备
   * [Kindle](kindle.md)
