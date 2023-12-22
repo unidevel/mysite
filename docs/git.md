@@ -2,7 +2,7 @@
 
 我自己配置的一些缩写命令，保存到`~/.gitconfig`下
 
-```
+```toml
 [alias]
 	co = checkout
 	sa = stash apply
