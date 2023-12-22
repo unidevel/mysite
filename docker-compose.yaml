@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginxproxy/nginx-proxy:latest
     privileged: false
-    restart: always
+    restart: unless-stopped
     ports:
     - 80:80
     - 443:443
@@ -21,7 +21,7 @@ services:
   letsencrypt:
     image: nginxproxy/acme-companion:latest
     privileged: false
-    restart: always
+    restart: unless-stopped
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock:ro
     - acme:/etc/acme.sh
@@ -34,12 +34,22 @@ services:
   myblog:
     image: nginx:latest
     privileged: false
-    restart: always
+    restart: unless-stopped
     volumes:
     - ./docs:/usr/share/nginx/html
     environment:
     - LETSENCRYPT_HOST=unidevel.cn,www.unidevel.cn
     - VIRTUAL_HOST=unidevel.cn,www.unidevel.cn
+
+  cors:
+    image: testcab/cors-anywhere
+    privileged: false
+    restart: unless-stopped
+    environment:
+    - LETSENCRYPT_HOST=cors.unidevel.cn
+    - VIRTUAL_HOST=cors.unidevel.cn
+    - VIRTUAL_PORT=8080
+    - CORSANYWHERE_WHITELIST=https://unidevel.cn,https://www.unidevel.cn
 
 volumes:
   certs:
