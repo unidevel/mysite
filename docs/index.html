@@ -19,6 +19,10 @@
       fill: #ababab !important;
       stroke: #ababab !important;
     }
+    .sidebar .search .clear-button {
+      padding-right: 7px;
+      padding-top: 7px;
+    }
   </style>
 </head>
 <body>
@@ -28,6 +32,11 @@
     let title = 'unidevel的日志';
     document.title = title;
     window.$docsify = {
+      search: {
+        placeholder: '搜索',
+        noData: '没有找到对应文档',
+        depth: 2,
+      },
       name: title,
       repo: "https://github.com/unidevel/mysite",
       loadSidebar: true,
@@ -80,6 +89,7 @@
   </script>
   <!-- Docsify v4 -->
   <script src="./vendor/js/docsify.min.js"></script>
+  <script src="./vendor/js/search.min.js"></script>
   <script src="./vendor/js/docsify-copy-code.min.js"></script>
   <script src="./vendor/js/docsify-pagination.min.js"></script>
   <script src="./vendor/js/darklight3_main.js" type="text/javascript"></script>
