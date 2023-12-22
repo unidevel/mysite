@@ -1,7 +1,7 @@
 # Fix crash of linux kernel 5.7 in qemu
 
 I installed debian 10 with backports in qemu on my mac laptop, the default kernel is 4.19 which works fine with the command below:
-```
+```shell
 qemu-system-x86_64 -m 2048 \
   -smp 2 \
   -display default,show-cursor=on \
@@ -21,7 +21,7 @@ But it crashed after installed kernel 5.7, the boot log is hard to view because 
 
 After digging with google, I added the parameter `-serial stdio 
 ` to qemu and append `console=ttyS0` to linux kernel in grub, so that I can redirect the log to a file. The boot log is: 
-```
+```log
 [    0.114300] .... node  #0, CPUs:      #1
 [    0.114419] invalid opcode: 0000 [#1] SMP PTI
 [    0.116007] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.7.0-0.bpo.2-amd64 #1 Debian 5.7.10-1~bpo10+1
@@ -74,7 +74,7 @@ After digging with google, I added the parameter `-serial stdio
 
 It seems that the CPU settings caused this issue, after tried with several types listed by command `qemu -cpu help`, finally found a usable type - `-cpu qemu64`, the final workable command is as below:
 
-```
+```shell
 qemu-system-x86_64 -m 2048 \
   -smp 2 \
   -display default,show-cursor=on \

@@ -5,13 +5,13 @@
 1. 安装官方驱动
 2. brew install mfcuk mfoc ， 后来发现人品爆发，mfuck竟然没用上
 3. 连上nfc，放上门卡，运行nfc-list，报错了
-```
+```log
 nfc-list uses libnfc 1.7.1
 error	libnfc.driver.acr122_usb	Unable to claim USB interface (Permission denied)
 nfc-list: ERROR: Unable to open NFC device: acr122_usb:020:002
 ```
 4. 折腾了一番，发现连上ACR122U后需要执行一下下面两个命令（每次连接都要）
-```
+```shell
 sudo launchctl stop com.apple.ifdreader
 sudo launchctl remove com.apple.ifdreader
 ```

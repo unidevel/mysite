@@ -2,7 +2,7 @@
 
 ### 设置启动器
 
-```
+```shell
 adb shell cmd package set-home-activity "ch.deletescape.lawnchair.plah"
 adb reboot
 ```
@@ -11,7 +11,7 @@ adb reboot
 
 https://www.booksebook.it/?p=223&lang=en
 
-```
+```shell
 adb shell pm disable-user --user 0 com.hmct.account
 adb shell pm disable-user --user 0 org.hapjs.mockup
 adb shell pm disable-user --user 0 com.hmct.semantic.analysis
@@ -33,7 +33,7 @@ adb shell pm disable-user --user 0 com.hmct.voicetranslate
 ```
 
 
-```
+```shell
 adb shell pm disable-user --user 0 com.android.hplayer
 adb shell pm disable-user --user 0 com.android.browser
 adb shell pm disable-user --user 0 com.android.calendar
@@ -88,7 +88,7 @@ https://f-droid.org/en/packages/org.jak_linux.dns66/
 https://coolapk.com/apk/com.catchingnow.icebox
 
 
-```
+```shell
 adb shell dumpsys account
 adb shell pm list users
 adb shell pm remove-user <user-id>

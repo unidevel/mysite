@@ -2,13 +2,13 @@
 
 ### 服务器端
 使用管理工具安装完mosh就可以了，比如debian系列的就可以通过下面命令安装
-```
+```shell
 apt-get update && apt-get install mosh
 ```
 
 需要注意的是，设置好防火墙规则，允许访问60001以上的udp端口，网上有很多教程使用的是ufw，一定要注意不要同时启动多个防火墙，比如当前运行了firewalld，但按教程安装了ufw，在ufw中打开了端口，但由于firewalld还在运行，导致无法连接，可以运行下面的命令解决
 
-```
+```shell
 systemctl disable firewalld
 systemctl enable ufw
 
@@ -17,12 +17,12 @@ ufw allow 60001:60100/udp
 
 ### 客户端
 Mac上可以使用brew安装
-```
+```shell
 brew install mosh
 ```
 
 Mac上安装完后，如果LC_CTYPE和LC_ALL没有设置的话，可能会出现下面的错误
-```
+```log
 The locale requested by LC_CTYPE=UTF-8 isn't available here.
 Running `locale-gen UTF-8' may be necessary.
 
@@ -69,12 +69,12 @@ export LC_ALL=en_US.UTF-8
 mosh使用起来非常简便，只要服务器端和客户端都安装上mosh(ssh套件也是必要的），服务器端不需要启动mosh-server，可以直接使用，命令格式和ssh基本一致，但是不支持ssh的tunnel
 
 1. 连接标准22端口的ssh服务器
-```
+```shell
 mosh user@host
 ```
 
 2. 连接非标准端口的ssh服务器
-```
+```shell
 mosh --ssh='ssh -p 2222' user@host
 ```
 

@@ -1,8 +1,11 @@
 # React Native实战
 
 ## 准备
+
+```shell
 npm install -g react-native-cli 
 npm install -g rnpm xcode
+```
 
 ## React 常用组件
 * redux
@@ -50,20 +53,20 @@ npm install -g rnpm xcode
 # 一些有用的adb命令
 
 ## Disable animation
-```
+```shell
 adb shell settings put global window_animation_scale 0
 adb shell settings put global transition_animation_scale 0
 adb shell settings put global animator_duration_scale 0
 ```
 
 ## grant sdcard permissions
-```
+```shell
 adb shell pm grant com.your.app.package android.permission.WRITE_EXTERNAL_STORAGE
 adb shell pm grant com.your.app.package android.permission.READ_EXTERNAL_STORAGE
 ```
 
 ## get all apks
-```
+```shell
 for i in $(adb shell pm list packages | awk -F':' '{print $2}'); do adb pull "$(adb shell pm path $i | awk -F':' '{print $2}')"; mv base.apk $i.apk 2&> /dev/null ;done
 ```
 
@@ -80,9 +83,9 @@ https://android.stackexchange.com/questions/26934/wifi-access-point-with-usb-otg
 
 # Use installed gradle
 
-```
-> cd android
-> ln -sf `which gradle` gradlew
+```shell
+cd android
+ln -sf `which gradle` gradlew
 ```
 
 # 免重置连接android wear到新手机

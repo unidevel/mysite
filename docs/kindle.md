@@ -12,17 +12,17 @@ Kindle具有保护视力的eink显示屏，但只有6寸，做电脑屏幕的屏
 * 首先，Kindle必须要[越狱](https://www.mobileread.com/forums/showthread.php?t=275881)
 * 然后，安装扩展 - [KUAL](https://www.mobileread.com/forums/showthread.php?t=203326), [USBNET](https://www.mobileread.com/forums/showthread.php?t=225030), [KTerm](https://www.mobileread.com/forums/showthread.php?t=205064)
 * 接下来，在电脑端，安装并启动ssh server和screen，在终端中启动命名为`kindle`的screen的会话(session)
-```
+```shell
 screen -S kindle
 ```
 * 然后，kindle上使用KUAL启动usbnet，电脑上另外启动一个终端使用ssh连接到kindle，在kindle的`/mnt/us`下建立文件`kterm.sh`
-```
+```shell
 /mnt/us/extensions/kterm/bin/kterm -k 0 -o R -e ./mirror.sh
 ```
 > 这个脚本的目的就是以横屏`-o R`启动，隐藏键盘`-k 0`，并在启动后运行同目录下的`mirror.sh`脚本
 
 * 接着，在`/mnt/us`目录下建立文件`mirror.sh`(替换`user_on_pc`和ip，并拷贝ssh的私钥id_rsa到kindle的`/mnt/us`目录)
-```
+```shell
 ssh -t -i /mnt/us/id_rsa user_on_pc@192.168.15.3 -- screen -x kindle
 ```
 > 目的就是在kindle上使用ssh连回电脑，然后使用`screen -x`回到命名为`kindle`的会话中

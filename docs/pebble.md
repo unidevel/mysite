@@ -3,7 +3,7 @@
 Pebble公司虽然倒了，但是手表真的非常好用，想弄个开发环境，发现官网已经消失了，还好Google到它的备份[网站](https://developer.rebble.io/developer.pebble.com/sdk/index.html)和[这个](https://developer.get-rpws.com/)，照着教程动手开始在OSX下撸开发环境，踩坑无数。首先要注意的是它的sdk工具只能用python2.x，如果装了python3的，先把python链接到OSX自带的python2.7上。
 
 好不容易把sdk工具弄上，接着撸hello world，这才发现下载不了SDK，查了下源码才发现要从官网下载，官网没了，当然......还好找到了个[文档](https://www.reddit.com/r/pebble/comments/9ufaay/sdk_install_guide/)
-```
+```shell
 pebble sdk install https://github.com/aveao/PebbleArchive/raw/master/SDKCores/sdk-core-4.3.tar.bz2
 ```
 

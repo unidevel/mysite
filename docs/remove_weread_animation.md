@@ -3,7 +3,7 @@
 ## 版本<=8.29.1
 微信读书的墨水屏版貌似屏蔽了漫画功能，所有的漫画都没法搜索到，只能安装非墨水屏版本的微信读书，但是里面讨厌的滚动动画实在是闪瞎眼，研究了一下，去除漫画书籍里面点击翻页的动画效果可以修改如下代码，就是简单的把`smali_classes2/com/tencent/weread/comic/view/experimental/ComicRecyclerView$smoothScrollByConst$1.smali` 里面的 `smoothScrollBy` 替换为 `scrollBy`（没准可以全部搜索替换一下）
 
-```
+```diff
 --- a/smali_classes2/com/tencent/weread/comic/view/experimental/ComicRecyclerView$smoothScrollByConst$1.smali
 +++ b/smali_classes2/com/tencent/weread/comic/view/experimental/ComicRecyclerView$smoothScrollByConst$1.smali
 @@ -67,7 +67,7 @@
@@ -24,7 +24,7 @@ Kindle升级到8.29.2后，去掉了大部分的`isEInkBuild`的代码，不知�
 
 只好又研究了一遍，自己弄了个 `Interpolator`， 反正去动画，就简单写一下好了
 
-```
+```java
 package com.amazon.android.docviewer.animation;
 
 import android.util.Log;
@@ -46,7 +46,7 @@ public class SimpleInterpolator implements Interpolator {
 ```
 
 在 `AnimationTranslateX` 使用一下，就搞定了点击翻页去动画
-```
+```java
     public AnimationTranslateX(View v, int offsetX, long duration, Interpolator interpolator) {
         Log.i("Kindle.AnimationTranslateX", "offsetX="+offsetX+",duration="+duration);
         this.animatedView = v;

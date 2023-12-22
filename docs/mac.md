@@ -6,7 +6,7 @@
 刚整完这个，又发现[自签名的证书不能用了](https://support.apple.com/en-us/HT210176)，据说[用openssl 1.1.1](https://forums.developer.apple.com/thread/119877)可以解决这个问题
 
 接下来，发现[brew安装的macvim又出问题了](https://github.com/macvim-dev/macvim/issues/947)，据说补丁已经进了，可以用下面的方式安装
-```
+```shell
 brew install macvim --HEAD
 ```
 

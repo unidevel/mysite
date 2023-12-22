@@ -61,7 +61,7 @@ github国内访问很慢，加速可以连接VPN，或者设置一个git的代�
 下面设置一个socks5的代理给git用
 
 1. Create SOCKS proxy by using ssh to a linux machine, here is an example (assume SOCKS port 8087)
-```
+```shell
 ssh -D 8087 <remote host>
 ```
 2. After step 1, SOCKS proxy will listen `127.0.0.1:8087`, now let's create `~/.ssh/config` to setup ssh proxy for `git://` protocol.(Do not change the content)
@@ -73,18 +73,18 @@ Host github.com
   ProxyCommand nc -X 5 -x localhost:8087 %h %p
 ```
 3. Then create a script for git, for example, put it to `~/.myzsh/git-proxy-wrapper`
-```
+```shell
 #!/bin/sh
 _proxy=127.0.0.1
 _proxyport=8087
 nc -X 5 -x $_proxy:$_proxyport $@
 ```
 4. Tell git use this script on our project. (run the git command under project folder, it's per project, or use `--global` flag to setup global proxy)
-```
+```shell
 git config core.gitProxy '~/.myzsh/git-proxy-wrapper for github.com'
 ```
 5. Then you can test your git pull/push command, and run the following command to verify proxy works while pulling/pushing.
-```
+```shell
 ps -ef | grep -e 'nc '
 ```
 6. Make sure ssh is connected in step1 when running git command to access remote repository.
