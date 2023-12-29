@@ -1,5 +1,5 @@
 version: "3"
-
+name: "mysite"
 services:
   nginx:
     image: nginxproxy/nginx-proxy:latest
@@ -53,7 +53,16 @@ services:
     - CORSANYWHERE_WHITELIST=https://unidevel.cn,https://www.unidevel.cn
     extra_hosts:
     - "github.com:140.82.112.3"
-    - "api.github.com:140.82.114.6"
+    - "api.github.com:140.82.112.6"
+
+  runner:
+    image: unidevel/github-runner
+    restart: unless-stopped
+    environment:
+    - TOKEN=${TOKEN}
+    - REPO=unidevel/mysite
+    volumes:
+    - .:/app
 
 volumes:
   certs:
