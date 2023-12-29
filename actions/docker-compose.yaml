@@ -2,9 +2,10 @@ version: "3"
 name: "mysite"
 services:
   runner:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: unidevel/github-runner
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
     restart: unless-stopped
     environment:
     - TOKEN=${TOKEN}
