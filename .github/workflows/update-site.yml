@@ -9,5 +9,5 @@ jobs:
       #   git remote add deploy git@github.com:unidevel/mysite.git && git fetch deploy
       # 2. Create .env under actions folder, add TOKEN with your github access token
       # 3. Under the actions folder, run `docker compose up -d` to start the self-hosted runner
-      - run: (cd /app; sudo git rebase deploy/${{ github.ref_name }})
+      - run: (cd /app; sudo git fetch deploy && sudo git rebase deploy/${{ github.ref_name }})
 
