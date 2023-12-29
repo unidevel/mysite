@@ -1,0 +1,18 @@
+version: "3"
+name: "mysite"
+services:
+  runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+    - TOKEN=${TOKEN}
+    - REPO=unidevel/mysite
+    volumes:
+    - ..:/app
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
