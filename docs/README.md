@@ -7,8 +7,8 @@ graph LR
     user(( User )) --> proxy
     proxy(nginx-proxy) -- Let's encrypt --> acme{{acme-companion}}
     proxy -- unidevel.cn --> nginx-docs(nginx)
-    nginx-docs --> site[ files in /docs ]
-    actions((github)) --> runner( self-hosted runner ) -- update --> site
+    nginx-docs -- static files --> site[ /docs ]
+    actions((github))  -- action --> runner( self-hosted runner ) -- update --> site
 ```
 
 部署十分方便，在 [docker-compose.yml](https://github.com/unidevel/mysite/blob/main/docker-compose.yaml) 所在目录使用 `docker compose up -d` 即可完成部署。
@@ -22,9 +22,9 @@ graph LR
     user(( User )) --> proxy
     proxy(nginx-proxy) -- Let's encrypt --> acme{{acme-companion}}
     proxy -- unidevel.cn --> nginx-docs(nginx)
-    nginx-docs --> site[ files in /docs ]
-    proxy -. site1 .-> wireguard(wireguard) .-> internal1[home service1]
-    proxy -. site2 .-> ssh(ssh server) .-> internal2[home service2]
+    nginx-docs -- static files --> site[ /docs ]
+    proxy -. site1 .-> wireguard(wireguard) -. vpn .-> internal1[home service1]
+    proxy -. site2 .-> ssh(ssh server) -. port forward .-> internal2[home service2]
 ```
 
 ssh和wireguar的对比，总体来说各有优劣
