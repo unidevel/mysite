@@ -1,121 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>unidevel的日志</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="unidevel的日志">
-  <meta name="author" content="unidevel">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="./vendor/css/darklight3.css" type="text/css">
-  <link rel="stylesheet" href="./vendor/css/theme-dark.css" title="dark">
-  <link rel="stylesheet alternative" href="./vendor/css/theme-light.css" title="light">
-  <link rel="stylesheet" href="./vendor/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="./vendor/css/gitalk.css" />
-  <style>
-    .app-nav a {color:#808080;}
-    .mermaid .edgePaths .flowchart-link {
-      stroke: #ababab !important;
-    }
-    .mermaid .marker {
-      fill: #ababab !important;
-      stroke: #ababab !important;
-    }
-    .sidebar .search .clear-button {
-      padding-right: 7px;
-      padding-top: 7px;
-    }
-  </style>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="./vendor/js/docsify-edit-on-github.js"></script>
-  <script>
-    let title = 'unidevel的日志';
-    document.title = title;
-    window.$docsify = {
-      search: {
-        placeholder: '搜索',
-        noData: '没有找到对应文档',
-        depth: 2,
-      },
-      name: title,
-      repo: "https://github.com/unidevel/mysite",
-      loadSidebar: true,
-      loadNavbar: true,
-      coverpage: false,
-      copyCode: {
-        buttonText: {
-          '/': '点击复制',
+  <head>
+    <meta charset="UTF-8" />
+    <title>unidevel的日志</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="unidevel的日志" />
+    <meta name="author" content="unidevel" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="./vendor/css/darklight3.css" type="text/css" />
+    <link rel="stylesheet" href="./vendor/css/theme-dark.css" title="dark" />
+    <link
+      rel="stylesheet alternative"
+      href="./vendor/css/theme-light.css"
+      title="light"
+    />
+    <link rel="stylesheet" href="./vendor/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="./vendor/css/gitalk.css" />
+    <style>
+      .app-nav a {
+        color: #808080;
+      }
+      .mermaid .edgePaths .flowchart-link {
+        stroke: #ababab !important;
+      }
+      .mermaid .marker {
+        fill: #ababab !important;
+        stroke: #ababab !important;
+      }
+      .sidebar .search .clear-button {
+        padding-right: 7px;
+        padding-top: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./vendor/js/docsify-edit-on-github.js"></script>
+    <script>
+      let title = "unidevel的日志";
+      document.title = title;
+      window.$docsify = {
+        search: {
+          placeholder: "搜索",
+          noData: "没有找到对应文档",
+          depth: 2,
         },
-        errorText: {
-          '/': '错误',
+        name: title,
+        repo: "https://github.com/unidevel/mysite",
+        loadSidebar: true,
+        loadNavbar: true,
+        coverpage: false,
+        copyCode: {
+          buttonText: {
+            "/": "点击复制",
+          },
+          errorText: {
+            "/": "错误",
+          },
+          successText: {
+            "/": "好了",
+          },
         },
-        successText: {
-          '/': '好了',
+        pagination: {
+          previousText: "上一篇",
+          nextText: "下一篇",
+          crossChapter: true,
+          crossChapterText: true,
         },
-      },
-      pagination: {
-        previousText: '上一篇',
-        nextText: '下一篇',
-        crossChapter: true,
-        crossChapterText: true,
-      },
-      toc: {
-        scope: '.markdown-section',
-        headings: 'h1, h2, h3, h4, h5, h6',
-        title: '目录',
-      },
-      footer: {
-        copy: '<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" title="备案号：京ICP备16048548号-2">备案号：京ICP备16048548号-2</a>',
-        auth: ' ',
-        pre: ' ',
-        style: 'text-align: right;',
-      },
-      mermaidConfig: {
-        querySelector: ".mermaid",
-      },
-      darklightTheme: {
-        defaultTheme : 'dark',
-      },
-      beian: {
-        ICP: "京ICP备16048548号-2",
-      },
-      plugins: [
-        EditOnGithubPlugin.create("https://github.com/unidevel/mysite/blob/main/docs/", null, "编辑"),
-      ],
-    }
-  </script>
-  <!-- Docsify v4 -->
-  <script src="./vendor/js/docsify.min.js"></script>
-  <script src="./vendor/js/search.min.js"></script>
-  <script src="./vendor/js/docsify-copy-code.min.js"></script>
-  <script src="./vendor/js/docsify-pagination.min.js"></script>
-  <script src="./vendor/js/darklight3_main.js" type="text/javascript"></script>
-  <script src="./vendor/js/darklight3_index.js" type="text/javascript"></script>
-  <script src="./vendor/js/pangu.min.js"></script>
-  <script src="./vendor/js/prism-bash.min.js"></script>
-  <script src="./vendor/js/prism-nginx.min.js"></script>
-  <script src="./vendor/js/prism-rust.min.js"></script>
-  <script src="./vendor/js/prism-python.min.js"></script>
-  <script src="./vendor/js/prism-json.min.js"></script>
-  <script src="./vendor/js/prism-log.min.js"></script>
-  <script src="./vendor/js/prism-lua.min.js"></script>
-  <script src="./vendor/js/prism-vim.min.js"></script>
-  <script src="./vendor/js/prism-diff.min.js"></script>
-  <script src="./vendor/js/prism-toml.min.js"></script>
-  <script src="./vendor/js/prism-yaml.min.js"></script>
-  <script src="./vendor/js/prism-java.min.js"></script>
-  <script src="./vendor/js/prism-typescript.min.js"></script>
-  <script src="./vendor/js/docsify-fontawesome.min.js"></script>
-  <script type="module">
-    import mermaid from "./vendor/mermaid/dist/mermaid.esm.min.js";
-    mermaid.initialize({ startOnLoad: true });
-    window.mermaid = mermaid;
-  </script>
-  <script src="./vendor/js/docsify-mermaid.js"></script>
-  <script src="./vendor/js/docsify_gitalk.js"></script>
-  <script src="./vendor/js/gitalk.min.js"></script>
+        toc: {
+          scope: ".markdown-section",
+          headings: "h1, h2, h3, h4, h5, h6",
+          title: "目录",
+        },
+        footer: {
+          copy: '<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" title="备案号：京ICP备16048548号-2">备案号：京ICP备16048548号-2</a>',
+          auth: " ",
+          pre: " ",
+          style: "text-align: right;",
+        },
+        mermaidConfig: {
+          querySelector: ".mermaid",
+        },
+        darklightTheme: {
+          defaultTheme: "dark",
+        },
+        beian: {
+          ICP: "京ICP备16048548号-2",
+        },
+        plugins: [
+          EditOnGithubPlugin.create(
+            "https://github.com/unidevel/mysite/blob/main/docs/",
+            null,
+            "编辑",
+          ),
+        ],
+      };
+    </script>
+    <!-- Docsify v4 -->
+    <script src="./vendor/js/docsify.min.js"></script>
+    <script src="./vendor/js/search.min.js"></script>
+    <script src="./vendor/js/docsify-copy-code.min.js"></script>
+    <script src="./vendor/js/docsify-pagination.min.js"></script>
+    <script
+      src="./vendor/js/darklight3_main.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="./vendor/js/darklight3_index.js"
+      type="text/javascript"
+    ></script>
+    <script src="./vendor/js/pangu.min.js"></script>
+    <script src="./vendor/js/prism-bash.min.js"></script>
+    <script src="./vendor/js/prism-nginx.min.js"></script>
+    <script src="./vendor/js/prism-rust.min.js"></script>
+    <script src="./vendor/js/prism-python.min.js"></script>
+    <script src="./vendor/js/prism-json.min.js"></script>
+    <script src="./vendor/js/prism-log.min.js"></script>
+    <script src="./vendor/js/prism-lua.min.js"></script>
+    <script src="./vendor/js/prism-vim.min.js"></script>
+    <script src="./vendor/js/prism-diff.min.js"></script>
+    <script src="./vendor/js/prism-toml.min.js"></script>
+    <script src="./vendor/js/prism-yaml.min.js"></script>
+    <script src="./vendor/js/prism-java.min.js"></script>
+    <script src="./vendor/js/prism-typescript.min.js"></script>
+    <script src="./vendor/js/docsify-fontawesome.min.js"></script>
+    <script type="module">
+      import mermaid from "./vendor/mermaid/dist/mermaid.esm.min.js";
+      mermaid.initialize({ startOnLoad: true });
+      window.mermaid = mermaid;
+    </script>
+    <script src="./vendor/js/docsify-mermaid.js"></script>
+    <!-- script src="./vendor/js/docsify_gitalk.js"></script>
+    <script src="./vendor/js/gitalk.min.js"></script>
   <script>
     const gitalk = new Gitalk({
       clientID: '5bacc0b375ecceaba9b0',
@@ -127,7 +146,11 @@
       proxy: 'https://cors.unidevel.cn/https://github.com/login/oauth/access_token',
       id: (location.hash.substr(1) ? location.hash.substring(1, location.hash.indexOf('?') > 0 ? location.hash.indexOf('?') : undefined ) : '/').substring(0, 40),
     });
-  </script>
-  <script type="text/javascript" src="//api.tongjiniao.com/c?_=596058249768194048" async></script>
-</body>
+  </script -->
+    <script
+      type="text/javascript"
+      src="//api.tongjiniao.com/c?_=596058249768194048"
+      async
+    ></script>
+  </body>
 </html>

@@ -1,3 +1,27 @@
+# 通过jemallocator获取heap的使用信息
+
+在 main 函数前加入
+
+```rust
+use jemalloc_ctl::{stats, epoch};
+
+#[global_allocator]
+static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
+```
+
+统计代码
+```rust
+     epoch::advance().unwrap();
+     let allocated = stats::allocated::read().unwrap();
+     let resident = stats::resident::read().unwrap();
+     println!("{} bytes allocated/{} bytes resident", allocated, resident);
+```
+
+
+References:
+1. https://docs.rs/jemalloc-ctl/latest/jemalloc_ctl/
+2. https://github.com/jemalloc/jemalloc/wiki/Use-Case%3A-Basic-Allocator-Statistics
+
 # 在rust工程中使用本地的crate
 
 例如在myproj里面使用mylib的crate
