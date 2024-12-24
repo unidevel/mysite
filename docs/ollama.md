@@ -11,26 +11,30 @@
 步骤:
 
 1. 安装`ollama`和`ollama-rocm`
-```
+
+```sh
 pacman -S ollama ollama-rocm
 ```
 
 2. 设置相关的环境变量
-```
+
+```fish
 set -gx HSA_OVERRIDE_GFX_VERSION "11.0.2"
 # set -gx OLLAMA_LLM_LIBRARY rocm_v60000u
 set -gx OLLAMA_LLM_LIBRARY rocm_v60000u_avx512
 ```
 
 3. 测试
-```
+
+```sh
 ollama serve
 
 ollama run tinyllama --verbose
 ```
 
 4. 验证模型在GPU内存中加载
-```
+
+```sh
 ollama run tinyllama
 ollama ps
 
@@ -39,7 +43,8 @@ tinyllama:latest    2644915ede35    1.9 GB    100% GPU     4 minutes from now
 ```
 
 模型如果大于GPU的容量，会首先在GPU内存中加载，剩下的在普通内存中加载，比如这个`gemma2:27b`
-```
+
+```sh
 ollama run gemma2:27b
 ollama ps
 
@@ -50,7 +55,8 @@ gemma2:27b    53261bc9c192    18 GB    12%/88% CPU/GPU    3 minutes from now
 5. 比较，可以看出GPU的速度快那么一点儿
 
 a. 使用GPU运行
-```
+
+```sh
 $ for run in {1..10}; do echo "where was beethoven born?" | ollama run tinyllama --verbose 2>&1 >/dev/null | grep "eval rate:"; done
 prompt eval rate:     1354.84 tokens/s
 eval rate:            88.77 tokens/s
@@ -74,7 +80,8 @@ prompt eval rate:     14000.00 tokens/s
 ```
 
 b. 使用CPU运行(清理环境变量，重新运行`ollama serve`)
-```
+
+```sh
 $ for run in {1..10}; do echo "where was beethoven born?" | ollama run tinyllama --verbose 2>&1 >/dev/null | grep "eval rate:"; done
 prompt eval rate:     283.78 tokens/s
 eval rate:            83.72 tokens/s
