@@ -10,7 +10,7 @@
   * [<i class="fas fa-font fa-fw"></i> font](font.md)
   * [<i class="fab fa-apple fa-fw"></i> Mac](mac.md)
   * [<i class="fab fa-docker fa-fw"></i> docker](docker.md)
-  * [<i class="fab fa-hexagon-nodes fa-fw"></i> ollama](ollama.md)
+  * [<i class="fas fa-microchip fa-fw"></i> ollama](ollama.md)
   * [<i class="fab fa-chrome fa-fw"></i> chrome](chrome.md)
 
 * <i class="fas fa-book fa-fw"></i> 墨水屏设备
