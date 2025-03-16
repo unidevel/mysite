@@ -8,7 +8,7 @@ graph LR
     proxy(nginx-proxy) -- Let's encrypt --> acme{{acme-companion}}
     proxy -- unidevel.cn --> nginx-docs(nginx)
     nginx-docs -- static files --> site[ /docs ]
-    actions((github))  -- action --> runner( self-hosted runner ) -- update --> site
+    actions((push event))  -- action --> runner -- update --> site
 ```
 
 部署十分方便，在 [docker-compose.yml](https://github.com/unidevel/mysite/blob/main/docker-compose.yaml) 所在目录使用 `docker compose up -d` 即可完成部署。
