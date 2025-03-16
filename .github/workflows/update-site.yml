@@ -1,13 +1,40 @@
-name: update-site
-on: [push]
+name: deployment
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
 jobs:
   update-git-repo:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
-      # To make it working
-      # 1. Need create git remote 'deploy' and update it
-      #   git remote add deploy git@github.com:unidevel/mysite.git && git fetch deploy
-      # 2. Create .env under actions folder, add TOKEN with your github access token
-      # 3. Under the actions folder, run `docker compose up -d` to start the self-hosted runner
-      - run: (cd /app; sudo git fetch deploy && sudo git rebase deploy/${{ github.ref_name }})
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.MY_SSHKEY }}
+          known_hosts: unnecessary
+          if_key_exists: replace
+
+      - name: Deploy
+        run: |
+          eval $(ssh-agent -s)
+          echo "${{ secrets.MY_SSHKEY }}" | ssh-add -
+          ssh-keyscan -H ${{ secrets.MY_HOST }} >> ~/.ssh/known_hosts
+          ssh -o ForwardAgent=yes ${{ secrets.MY_SSHUSER }}@${{ secrets.MY_HOST }} 'bash -s' << 'ENDSSH'
+          REPO_PATH="$HOME/mysite"
+          REPO_URL="git@github.com:${{ github.repository }}"
+
+          if [ ! -d "$REPO_PATH" ]; then
+            echo "Cloning repository $REPO_URL to $REPO_PATH"
+            git clone $REPO_URL $REPO_PATH
+          fi
+
+          cd $REPO_PATH
+          git fetch origin
+          git pull
+          ENDSSH
 
