@@ -42,28 +42,6 @@ services:
     - LETSENCRYPT_HOST=unidevel.cn,www.unidevel.cn
     - VIRTUAL_HOST=unidevel.cn,www.unidevel.cn
 
-  cors:
-    image: testcab/cors-anywhere
-    privileged: false
-    restart: unless-stopped
-    environment:
-    - LETSENCRYPT_HOST=cors.unidevel.cn
-    - VIRTUAL_HOST=cors.unidevel.cn
-    - VIRTUAL_PORT=8080
-    - CORSANYWHERE_WHITELIST=https://unidevel.cn,https://www.unidevel.cn
-    extra_hosts:
-    - "github.com:140.82.112.3"
-    - "api.github.com:140.82.112.6"
-
-  runner:
-    image: unidevel/github-runner
-    restart: unless-stopped
-    environment:
-    - TOKEN=${TOKEN}
-    - REPO=unidevel/mysite
-    volumes:
-    - .:/app
-
 volumes:
   certs:
   vhost:
