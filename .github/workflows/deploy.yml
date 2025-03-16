@@ -1,15 +1,12 @@
-name: deployment
+name: Deploy site
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
-  update-git-repo:
+  deploy-site:
     runs-on: ubuntu-latest
     steps:
       - name: Install SSH key
@@ -35,6 +32,8 @@ jobs:
 
           cd $REPO_PATH
           git fetch origin
-          git pull
+          git reset --hard origin/main
+          docker compose down || true
+          docker compose up -d
           ENDSSH
 
